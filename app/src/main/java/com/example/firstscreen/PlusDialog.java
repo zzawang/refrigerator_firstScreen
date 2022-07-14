@@ -3,6 +3,7 @@ package com.example.firstscreen;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -12,9 +13,10 @@ import com.example.firstscreen.databinding.DialogPlusBinding;
 public class PlusDialog extends Dialog {
 
     private DialogPlusBinding dialogPlusBinding;
-    private MyViewModel myViewModel;
+    private MyViewModel viewModel;
     private EditText edit_refrigerator_name;
     private Context myContext;
+    private int itemPos = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +24,22 @@ public class PlusDialog extends Dialog {
         dialogPlusBinding = DialogPlusBinding.inflate(getLayoutInflater());
         setContentView(dialogPlusBinding.getRoot());
 
-        // 다이얼로그의 배경을 투명으로 만든다.
-        //Objects.requireNonNull(getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        // 커스텀 다이얼로그의 각 위젯들을 정의한다.
         edit_refrigerator_name = dialogPlusBinding.refrigeratorName;
-        Button okButton = findViewById(R.id.buttonOK);
-        Button cancelButton = findViewById(R.id.buttonCancel);
+        Button okButton = dialogPlusBinding.buttonOK;
+        Button cancelButton = dialogPlusBinding.buttonCancel;
+
+
 
         // 버튼 리스너 설정
         okButton.setOnClickListener(view -> {
-            // 냉장고 추가
-            myViewModel.addUsers(dialogPlusBinding.refrigeratorName.getText().toString());
+            Log.e("dialog add user", edit_refrigerator_name.getText().toString());
+            if(itemPos<0) {
+                viewModel.addUsers(edit_refrigerator_name.getText().toString());
+            }
+            else{
+                viewModel.updateUsers(itemPos,edit_refrigerator_name.getText().toString());
+            }
+            dismiss();
         });
 
         cancelButton.setOnClickListener(view -> {
@@ -42,10 +48,11 @@ public class PlusDialog extends Dialog {
 
     }
 
-    public PlusDialog(Context mContext) {
+    public PlusDialog(Context mContext, MyViewModel myViewModel,int pos) {
         super(mContext);
         this.myContext = mContext;
+        this.viewModel = myViewModel;
+        this.itemPos = pos;
     }
-
 
 }

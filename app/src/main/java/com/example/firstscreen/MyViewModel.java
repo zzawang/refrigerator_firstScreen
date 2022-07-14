@@ -1,35 +1,53 @@
 package com.example.firstscreen;
 
 
-import androidx.lifecycle.LiveData;
+import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MyViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<String>> users;
-    private Integer itemPos = -1;
-    public MyViewModel(){
+    public MutableLiveData<ArrayList<String>> usersLivedata = new MutableLiveData<>();
+    public ArrayList<String> users = new ArrayList<>();
 
-    }
+    public MutableLiveData<Integer> userClickEvent = new MutableLiveData<Integer>();
+    public int userPos = -1;
 
+    // 냉장고 사용자의 position
     public String getUsers(int pos) {
-        return
+        Log.e("getUsers","getUsers");
+        return users.get(pos);
     }
 
+    // 냉장고 사용자 추가
     public void addUsers(String user){
-
+        String text = user;
+        Log.e("addUsers",text);
+        users.add(user);
+        usersLivedata.setValue(users);
     }
-    public Integer getItemPos() {
-        return itemPos;
+
+    // 냉장고 사용자 삭제
+    public void deleteUsers(int pos){
+        Log.e("deleteUsers","deleteUsers");
+        users.remove(pos);
+        usersLivedata.setValue(users);
     }
 
-    public String getName(){
-
-        return ;
+    // 냉장고 사용자 수정
+    public void updateUsers(int pos, String user){
+        Log.e("updateUsers","updateUsers");
+        users.add(pos, user);
+        usersLivedata.setValue(users);
     }
+
+    // 전체 사용자의 수
+    public Integer getItemSize() {
+        return users.size();
+    }
+
+
 }

@@ -5,4 +5,6 @@
     <string name="refrigerator_name">냉장고 id를 입력하시오. </string>
     <string name="click_ok">OK</string>
     <string name="click_cancel">CANCEL</string>
+    <string name="edit">냉장고 수정</string>
+    <string name="cancel">냉장고 삭제</string>
 </resources>

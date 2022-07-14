@@ -28,6 +28,7 @@
         android:backgroundTint="#FFFFFF"
         android:hint="@string/refrigerator_name"
         android:inputType="text"
+        android:minHeight="48dp"
         android:singleLine="false"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"

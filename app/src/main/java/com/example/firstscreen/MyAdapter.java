@@ -1,41 +1,53 @@
 package com.example.firstscreen;
 
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.firstscreen.databinding.FirstScreenItemBinding;
 
 
-public class MyAdapter(MyViewModel viewModel) extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private MyViewModel myViewModel;
+    private MyViewModel viewModel;
+
+    public MyAdapter(MyViewModel viewModel){
+        this.viewModel = viewModel;
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private FirstScreenItemBinding binding;
-        private TextView refrigeratorName = binding.refriPlustext;
 
-        public ViewHolder(FirstScreenItemBinding binding) {
-            super(binding.getRoot());
+        TextView refriPlustext ;
+        public ViewHolder(@NonNull View view) {
+            super(view);
+            this.refriPlustext = view.findViewById(R.id.refri_plustext);
+            view.setOnCreateContextMenuListener((View.OnCreateContextMenuListener) this);
+        }
+
+        public void onCreateContextMenu(ContextMenu a_menu, View a_view, ContextMenu.ContextMenuInfo a_menuInfo) {
+            ((Activity) a_view.getContext()).getMenuInflater().inflate(R.menu.refrigerator_menu, a_menu);
         }
 
         void setContents(int position){
-            refrigeratorName.setText(myViewModel.getUsers(position).getText());
+            refriPlustext.setText(viewModel.users.get(position));
         }
     }
 
     @NonNull
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        FirstScreenItemBinding binding = FirstScreenItemBinding.inflate(layoutInflater,parent,false);
-        return new ViewHolder(binding);
+        Context context = parent.getContext();
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.first_screen_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
@@ -45,7 +57,7 @@ public class MyAdapter(MyViewModel viewModel) extends RecyclerView.Adapter<MyAda
 
     @Override
     public int getItemCount() {
-        return myViewModel.getUsers(position).size();
+        return viewModel.getItemSize();
     }
 
 }
