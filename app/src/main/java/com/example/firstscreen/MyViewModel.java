@@ -16,6 +16,7 @@ public class MyViewModel extends ViewModel {
     public MutableLiveData<Integer> userClickEvent = new MutableLiveData<Integer>();
     public int userPos = -1;
 
+
     // 냉장고 사용자의 position
     public String getUsers(int pos) {
         Log.e("getUsers","getUsers");

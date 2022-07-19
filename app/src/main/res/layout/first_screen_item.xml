@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/refri_plusImage"
-        android:layout_width="116dp"
-        android:layout_height="122dp"
+        android:layout_width="123dp"
+        android:layout_height="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/refrigerator" />

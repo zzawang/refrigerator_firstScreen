@@ -16,7 +16,7 @@ public class PlusDialog extends Dialog {
     private MyViewModel viewModel;
     private EditText edit_refrigerator_name;
     private Context myContext;
-    private int itemPos = -1;
+    //private int itemPos = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +33,7 @@ public class PlusDialog extends Dialog {
         // 버튼 리스너 설정
         okButton.setOnClickListener(view -> {
             Log.e("dialog add user", edit_refrigerator_name.getText().toString());
-            if(itemPos<0) {
-                viewModel.addUsers(edit_refrigerator_name.getText().toString());
-            }
-            else{
-                viewModel.updateUsers(itemPos,edit_refrigerator_name.getText().toString());
-            }
+            viewModel.addUsers(edit_refrigerator_name.getText().toString());
             dismiss();
         });
 
@@ -48,11 +43,11 @@ public class PlusDialog extends Dialog {
 
     }
 
-    public PlusDialog(Context mContext, MyViewModel myViewModel,int pos) {
+    public PlusDialog(Context mContext, MyViewModel myViewModel) {
         super(mContext);
         this.myContext = mContext;
         this.viewModel = myViewModel;
-        this.itemPos = pos;
+        //this.itemPos = pos;
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.firstscreen;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,22 +18,36 @@ import com.example.firstscreen.databinding.FirstScreenItemBinding;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private MyViewModel viewModel;
+    private PlusDialog myDialog;
 
     public MyAdapter(MyViewModel viewModel){
         this.viewModel = viewModel;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
-        TextView refriPlustext ;
+        private TextView refriPlustext ;
+
         public ViewHolder(@NonNull View view) {
             super(view);
             this.refriPlustext = view.findViewById(R.id.refri_plustext);
-            view.setOnCreateContextMenuListener((View.OnCreateContextMenuListener) this);
+            //view.setOnCreateContextMenuListener((View.OnCreateContextMenuListener) this);
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition(); // 냉장고 위치 (0 ~ ...)
+                Log.d("test", "position = " + getAdapterPosition());
+            });
+
+            itemView.setOnCreateContextMenuListener(this);
+            itemView.setOnLongClickListener(view1 -> {
+                viewModel.userPos = getAdapterPosition();
+                return false;
+            });
         }
 
-        public void onCreateContextMenu(ContextMenu a_menu, View a_view, ContextMenu.ContextMenuInfo a_menuInfo) {
-            ((Activity) a_view.getContext()).getMenuInflater().inflate(R.menu.refrigerator_menu, a_menu);
+
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            ((Activity)view.getContext()).getMenuInflater().inflate(R.menu.refrigerator_menu, contextMenu);
         }
 
         void setContents(int position){
