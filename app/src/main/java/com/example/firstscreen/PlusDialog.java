@@ -16,7 +16,8 @@ public class PlusDialog extends Dialog {
     private MyViewModel viewModel;
     private EditText edit_refrigerator_name;
     private Context myContext;
-    //private int itemPos = -1;
+    private WarningDialog warningDialog;
+    private int itemPos = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +25,29 @@ public class PlusDialog extends Dialog {
         dialogPlusBinding = DialogPlusBinding.inflate(getLayoutInflater());
         setContentView(dialogPlusBinding.getRoot());
 
-        edit_refrigerator_name = dialogPlusBinding.refrigeratorName;
-        Button okButton = dialogPlusBinding.buttonOK;
-        Button cancelButton = dialogPlusBinding.buttonCancel;
+        edit_refrigerator_name = dialogPlusBinding.plusDialogEditText;
+        Button okButton = dialogPlusBinding.pludDialogbuttonOk;
+        Button cancelButton = dialogPlusBinding.plusDialogbuttonCancel;
 
 
 
         // 버튼 리스너 설정
         okButton.setOnClickListener(view -> {
             Log.e("dialog add user", edit_refrigerator_name.getText().toString());
-            viewModel.addUsers(edit_refrigerator_name.getText().toString());
+            if(itemPos<=-1){
+                if(!edit_refrigerator_name.getText().toString().equals("")){
+                    Log.e(edit_refrigerator_name.getText().toString(),"은 null값이 아님");
+                    viewModel.addUsers(edit_refrigerator_name.getText().toString());
+                }
+                else{
+                    warningDialog = new WarningDialog(myContext);
+                    warningDialog.show();
+                    return;
+                }
+            }
+            else{
+                viewModel.updateUsers(itemPos, edit_refrigerator_name.getText().toString());
+            }
             dismiss();
         });
 
@@ -43,11 +57,11 @@ public class PlusDialog extends Dialog {
 
     }
 
-    public PlusDialog(Context mContext, MyViewModel myViewModel) {
+    public PlusDialog(Context mContext, MyViewModel myViewModel, int pos) {
         super(mContext);
         this.myContext = mContext;
         this.viewModel = myViewModel;
-        //this.itemPos = pos;
+        this.itemPos = pos;
     }
 
 }
