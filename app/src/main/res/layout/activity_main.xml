@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/background"
+        android:id="@+id/mainBackGround"
         android:layout_width="451dp"
         android:layout_height="1000dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/background_cutout" />
 
     <ImageButton
-        android:id="@+id/add_button"
+        android:id="@+id/mainAddButton"
         android:layout_width="96dp"
         android:layout_height="75dp"
         android:layout_marginBottom="16dp"
@@ -39,18 +39,18 @@
         app:layout_constraintGuide_begin="239dp" />
 
     <ScrollView
-        android:id="@+id/recycleScroll"
+        android:id="@+id/mainRecycleScroll"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_button"
+        app:layout_constraintBottom_toTopOf="@+id/mainAddButton"
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="@+id/guideline_top">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_firstScreen"
+            android:id="@+id/mainRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -59,12 +59,12 @@
     </ScrollView>
 
     <ImageView
-        android:id="@+id/topicName_1"
+        android:id="@+id/mainTopicName1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/topicName_2"
+        app:layout_constraintBottom_toTopOf="@+id/mainTopicName2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +72,12 @@
         app:srcCompat="@drawable/first_screen_name_1" />
 
     <ImageView
-        android:id="@+id/topicName_2"
+        android:id="@+id/mainTopicName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_top"
-        app:layout_constraintEnd_toEndOf="@+id/topicName_1"
+        app:layout_constraintEnd_toEndOf="@+id/mainTopicName1"
         app:srcCompat="@drawable/first_screen_name_2" />
 
     <ImageView
@@ -86,11 +86,11 @@
         android:layout_height="120dp"
         android:layout_marginBottom="24dp"
         android:rotation="20"
-        app:layout_constraintBottom_toBottomOf="@+id/topicName_2"
-        app:layout_constraintEnd_toEndOf="@+id/topicName_2"
+        app:layout_constraintBottom_toBottomOf="@+id/mainTopicName2"
+        app:layout_constraintEnd_toEndOf="@+id/mainTopicName2"
         app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/topicName_2"
+        app:layout_constraintTop_toTopOf="@+id/mainTopicName2"
         app:layout_constraintVertical_bias="0.537"
         app:srcCompat="@drawable/hand" />
 
@@ -107,5 +107,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="343dp" />
+
+    <ImageView
+        android:id="@+id/mainLogOutButton"
+        android:layout_width="82dp"
+        android:layout_height="72dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/btn_dialog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

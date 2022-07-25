@@ -4,79 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".RegisterActivity">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/registerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="#FFDE7A"
-        android:text="아이디"
+        android:text="이메일"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/registerEmailText"
+        app:layout_constraintEnd_toStartOf="@+id/registerEmailText"
+        app:layout_constraintStart_toStartOf="@+id/registerTopic" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/registerPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFDE7A"
         android:text="비밀번호"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/registerPwText"
+        app:layout_constraintEnd_toEndOf="@+id/registerEmail"
+        app:layout_constraintTop_toTopOf="@+id/registerPwText"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/registerPwCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFDE7A"
         android:text="비밀번호 확인"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword2"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword2" />
+        app:layout_constraintBottom_toBottomOf="@+id/registerPwCheckText"
+        app:layout_constraintEnd_toEndOf="@+id/registerPw"
+        app:layout_constraintTop_toTopOf="@+id/registerPwCheckText" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/registerPwText"
         android:layout_width="220dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="6글자 이상 입력하시오."
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="220dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="아이디 (한글, 영어, 특수문자 모두 가능)"
-        android:inputType="text"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintEnd_toEndOf="@+id/registerEmailText"
+        app:layout_constraintStart_toStartOf="@+id/registerEmailText"
+        app:layout_constraintTop_toBottomOf="@+id/registerEmailText" />
+
+    <EditText
+        android:id="@+id/registerPwCheckText"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/registerPwText"
+        app:layout_constraintStart_toStartOf="@+id/registerPwText"
+        app:layout_constraintTop_toBottomOf="@+id/registerPwText" />
+
+    <EditText
+        android:id="@+id/registerEmailText"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="이메일 입력"
+        android:inputType="textEmailAddress"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/registerTopic"
+        app:layout_constraintTop_toBottomOf="@+id/registerTopic" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/registerTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -86,33 +91,36 @@
         app:srcCompat="@drawable/first_screen_name" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/registerImage"
         android:layout_width="77dp"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/add_user"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="136dp" />
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/registerTopic"
+        app:srcCompat="@drawable/add_user" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline_middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="205dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:backgroundTint="#75FF5866"
         android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/registerEmailText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/registerEmail"
+        app:layout_constraintTop_toBottomOf="@+id/registerPwCheckWarning" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/registerPwCheckWarning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -120,17 +128,17 @@
         android:textColor="#F44336"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/imageView3" />
+        app:layout_constraintBottom_toBottomOf="@+id/registerPwCheckWarningImage"
+        app:layout_constraintStart_toEndOf="@+id/registerPwCheckWarningImage" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/registerPwCheckWarningImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#F44336"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
+        app:layout_constraintStart_toStartOf="@+id/registerPwCheckText"
+        app:layout_constraintTop_toBottomOf="@+id/registerPwCheckText"
         app:srcCompat="@android:drawable/stat_sys_warning" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

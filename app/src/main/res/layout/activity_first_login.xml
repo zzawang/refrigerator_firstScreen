@@ -4,57 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".FirstLoginActivity">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/firstLoginEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:background="#FFDE7A"
-        android:text="아이디"
+        android:text="이메일"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/firstLoginEmailText"
+        app:layout_constraintEnd_toStartOf="@+id/firstLoginEmailText"
+        app:layout_constraintStart_toStartOf="@+id/firstLoginTopic" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/firstLoginPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFDE7A"
         android:text="비밀번호"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/firstLoginPwText"
+        app:layout_constraintEnd_toEndOf="@+id/firstLoginEmail"
+        app:layout_constraintTop_toTopOf="@+id/firstLoginPwText"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/firstLoginPwText"
         android:layout_width="220dp"
         android:layout_height="40dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/firstLoginEmailText"
+        app:layout_constraintStart_toStartOf="@+id/firstLoginEmailText"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginEmailText" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/firstLoginEmailText"
         android:layout_width="220dp"
         android:layout_height="40dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="아이디 (한글, 영어, 특수문자 모두 가능)"
-        android:inputType="text"
+        android:hint="이메일 입력"
+        android:inputType="textEmailAddress"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintEnd_toEndOf="@+id/firstLoginTopic"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginTopic" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/firstLoginTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -64,67 +67,71 @@
         app:srcCompat="@drawable/first_screen_name" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/firstLoginImage"
         android:layout_width="77dp"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/add_user"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="136dp" />
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/firstLoginTopic"
+        app:srcCompat="@drawable/add_user" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/firstLoginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
+        android:backgroundTint="#75FF5866"
         android:text="로그인"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/firstLoginPwText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/firstLoginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginPwText"
         app:layout_constraintVertical_bias="0.082" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/firstFindEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="아이디 찾기"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/firstLoginButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginPwText"
         app:layout_constraintVertical_bias="0.507" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/firstFindPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="비밀번호 찾기"
-        android:textSize="8sp"
+        android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/firstLoginButton"
+        app:layout_constraintStart_toStartOf="@+id/guideline_middle"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginPwText"
         app:layout_constraintVertical_bias="0.507" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline_middle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="205dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/firstRegisterButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#75FF5866"
         android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintEnd_toEndOf="@+id/firstLoginButton"
+        app:layout_constraintStart_toStartOf="@+id/firstLoginButton"
+        app:layout_constraintTop_toBottomOf="@+id/firstLoginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

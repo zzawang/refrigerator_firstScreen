@@ -5,11 +5,11 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class recyclerviewDeco extends RecyclerView.ItemDecoration {
+public class RecyclerviewDeco extends RecyclerView.ItemDecoration {
 
     private final int divWidth;
 
-    public recyclerviewDeco(int divWidth) {
+    public RecyclerviewDeco(int divWidth) {
         this.divWidth = divWidth;
     }
 
