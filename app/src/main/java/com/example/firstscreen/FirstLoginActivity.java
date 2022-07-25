@@ -83,5 +83,4 @@ public class FirstLoginActivity extends AppCompatActivity {
             }
         });
     }
-
 }
