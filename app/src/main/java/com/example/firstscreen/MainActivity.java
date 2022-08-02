@@ -25,7 +25,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivityMainBinding activityMainBinding;
+    private InformationDialog informationDialog; // 안내 다이얼로그
     private DatabaseReference mPostReference;
     private FirebaseAuth firebaseAuth; // 파이어베이스 인증
     private RecyclerView recyclerView;
@@ -38,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        recyclerView = binding.mainRecyclerView;
+        recyclerView = activityMainBinding.mainRecyclerView;
         adapter = new MyAdapter(viewModel);
 
         recyclerView.setAdapter(adapter);
@@ -53,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new RecyclerviewDeco(5));
 
-        addButton = binding.mainAddButton;
-        logoutButton = binding.mainLogOutButton;
+        addButton = activityMainBinding.mainAddButton;
+        logoutButton = activityMainBinding.mainLogOutButton;
 
         addButton.setOnClickListener(view -> {
             plusDialog = new PlusDialog(MainActivity.this, viewModel, -1);
@@ -64,20 +65,9 @@ public class MainActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 로그아웃 하기
-                firebaseAuth.signOut();
-
-                Intent intent = new Intent(MainActivity.this, FirstLoginActivity.class);
-                startActivity(intent);
-                finish();
-
-                Toast.makeText(MainActivity.this, "로그아웃 성공", Toast.LENGTH_SHORT).show();
-                Log.e("로그아웃 성공", "");
-
-                /*
-                < 탈퇴 처리 >
-                firebaseAuth.getCurrentUser().delete();
-                */
+                // 로그아웃 다이얼로그
+                informationDialog = new InformationDialog(MainActivity.this, 2);
+                informationDialog.show();
 
             }
         });

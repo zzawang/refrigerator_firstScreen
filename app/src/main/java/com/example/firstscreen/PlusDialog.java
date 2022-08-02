@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.firstscreen.databinding.ActivityMainBinding;
 import com.example.firstscreen.databinding.DialogPlusBinding;
 
 public class PlusDialog extends Dialog {
@@ -40,7 +39,7 @@ public class PlusDialog extends Dialog {
                     viewModel.addUsers(edit_refrigerator_name.getText().toString());
                 }
                 else{
-                    warningDialog = new WarningDialog(myContext);
+                    warningDialog = new WarningDialog(myContext, 3);
                     warningDialog.show();
                     return;
                 }
@@ -57,10 +56,10 @@ public class PlusDialog extends Dialog {
 
     }
 
-    public PlusDialog(Context mContext, MyViewModel myViewModel, int pos) {
-        super(mContext);
-        this.myContext = mContext;
-        this.viewModel = myViewModel;
+    public PlusDialog(Context context, MyViewModel viewModel, int pos) {
+        super(context);
+        this.myContext = context;
+        this.viewModel = viewModel;
         this.itemPos = pos;
     }
 

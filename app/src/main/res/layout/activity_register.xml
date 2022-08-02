@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:backgroundTint="#75FF5866"
-        android:text="회원가입"
+        android:text="회원가입 완료"
         app:layout_constraintEnd_toEndOf="@+id/registerEmailText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/registerEmail"

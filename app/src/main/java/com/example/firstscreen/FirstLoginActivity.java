@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class FirstLoginActivity extends AppCompatActivity {
 
-    private ActivityFirstLoginBinding binding;
+    private ActivityFirstLoginBinding activityFirstLoginBinding; // FirstLoginActivity binding
     private FirebaseAuth firebaseAuth; // 파이어베이스 인증
     private DatabaseReference databaseReference; // 실시간 데이터베이스
     private EditText firstLoginEmail, firstLoginPw; // 로그인 입력 필드 (아이디, 비밀번호)
@@ -33,17 +33,19 @@ public class FirstLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityFirstLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        activityFirstLoginBinding = ActivityFirstLoginBinding.inflate(getLayoutInflater());
+        setContentView(activityFirstLoginBinding.getRoot());
 
+        // 초기화
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        firstLoginEmail = binding.firstLoginEmailText;
-        firstLoginPw = binding.firstLoginPwText;
-        loginButton = binding.firstLoginButton;
-        registerButton = binding.firstRegisterButton;
+        firstLoginEmail = activityFirstLoginBinding.firstLoginEmailText;
+        firstLoginPw = activityFirstLoginBinding.firstLoginPwText;
+        loginButton = activityFirstLoginBinding.firstLoginButton;
+        registerButton = activityFirstLoginBinding.firstRegisterButton;
 
+        // 로그인 버튼 클릭
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +76,7 @@ public class FirstLoginActivity extends AppCompatActivity {
             }
         });
 
+        // 회원가입 버튼 클릭
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
