@@ -21,8 +21,12 @@ public class MyViewModel extends ViewModel {
 
     public int userPos = -1;
 
+    private String userUid;
     private DatabaseReference mPostReference = FirebaseDatabase.getInstance().getReference();
-    private java.util.Map<String, Object> Map;
+
+    public MyViewModel(String uid) {
+        this.userUid = uid;
+    }
 
     // 냉장고 사용자의 position
     public String getUsers(int pos) {
@@ -60,6 +64,9 @@ public class MyViewModel extends ViewModel {
         usersLivedata.setValue(users);
     }
 
+    public void setUserUid(String uid){
+        this.userUid = uid;
+    }
 
     // 전체 사용자의 수
     public Integer getItemSize() {
@@ -77,5 +84,9 @@ public class MyViewModel extends ViewModel {
 
     public Task<Void> updateUserinDataBase(String beforeUser, HashMap<String, Object> hashMap) {
         return mPostReference.child("냉장고").child(beforeUser).updateChildren(hashMap);
+    }
+
+    public String getUserUid(){
+        return userUid;
     }
 }

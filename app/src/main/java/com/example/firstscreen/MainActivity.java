@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
+        Intent intent = getIntent();
+        String userUid = intent.getStringExtra("user의 UID");
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
