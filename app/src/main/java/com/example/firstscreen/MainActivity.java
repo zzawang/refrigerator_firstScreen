@@ -62,14 +62,11 @@ public class MainActivity extends AppCompatActivity {
             plusDialog.show();
         });
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 로그아웃 다이얼로그
-                informationDialog = new InformationDialog(MainActivity.this, 2);
-                informationDialog.show();
+        logoutButton.setOnClickListener(view -> {
+            // 로그아웃 다이얼로그
+            informationDialog = new InformationDialog(MainActivity.this, 2);
+            informationDialog.show();
 
-            }
         });
 
 
@@ -96,5 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        informationDialog = new InformationDialog(MainActivity.this, 3);
+        informationDialog.show();
     }
 }

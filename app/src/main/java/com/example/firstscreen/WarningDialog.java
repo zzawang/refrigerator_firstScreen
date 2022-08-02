@@ -14,7 +14,7 @@ public class WarningDialog extends Dialog {
 
     private DialogWarningBinding dialogWarningBinding;
     private Context myContext;
-    private int myMode = 0;
+    private int myMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

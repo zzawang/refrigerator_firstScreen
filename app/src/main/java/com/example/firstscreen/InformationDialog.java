@@ -1,5 +1,6 @@
 package com.example.firstscreen;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
 import com.example.firstscreen.databinding.DialogInformationBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -17,7 +20,7 @@ public class InformationDialog extends Dialog {
     private FirebaseAuth firebaseAuth; // 파이어베이스 인증
     private DialogInformationBinding dialogInformationBinding;
     private Context myContext;
-    private int myMode = 0;
+    private int myMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +34,24 @@ public class InformationDialog extends Dialog {
         Button noButton = dialogInformationBinding.informationDialogbuttonNo;
         ImageView informationText = dialogInformationBinding.informationDialogText;
 
+
         // 회원가입 성공시
         if(myMode == 1){
             informationText.setImageResource(R.drawable.goto_login);
         }
         // 로그아웃
-        if(myMode == 2){
+        else if(myMode == 2){
             informationText.setImageResource(R.drawable.logout);
+        }
+        // 앱 종료
+        else if(myMode == 3){
+            informationText.setImageResource(R.drawable.finish_application);
         }
         // mode가 설정되어있지 않는 경우
         else{
             informationText.setImageResource(R.drawable.empty_text);
             Log.e("InformationDialog의 ","drawble mode 설정이 되어있지 않음");
         }
-
 
         // 버튼 리스너 설정
         yesButton.setOnClickListener(view -> {
@@ -56,7 +63,7 @@ public class InformationDialog extends Dialog {
                 myContext.startActivity(intent);
             }
             // 로그아웃
-            if(myMode == 2){
+            else if(myMode == 2){
                 firebaseAuth.signOut();
 
                 Intent intent = new Intent(myContext, StartActivity.class);
@@ -69,6 +76,11 @@ public class InformationDialog extends Dialog {
                 firebaseAuth.getCurrentUser().delete();
                 */
 
+            }
+
+            // 앱 종료
+            else if(myMode == 3){
+                ActivityCompat.finishAffinity(((Activity)myContext));
             }
 
             dismiss();

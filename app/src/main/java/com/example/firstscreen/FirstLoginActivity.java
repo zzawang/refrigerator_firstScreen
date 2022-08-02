@@ -13,10 +13,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.firstscreen.databinding.ActivityFirstLoginBinding;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,7 +30,6 @@ public class FirstLoginActivity extends AppCompatActivity {
     private DatabaseReference databaseReference; // 실시간 데이터베이스
     private EditText firstLoginEmail, firstLoginPw; // 로그인 입력 필드 (아이디, 비밀번호)
     private Button loginButton, registerButton; // 로그인, 회원가입 버튼
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,8 @@ public class FirstLoginActivity extends AppCompatActivity {
         loginButton = activityFirstLoginBinding.firstLoginButton;
         registerButton = activityFirstLoginBinding.firstRegisterButton;
 
-        // 로그인 버튼 클릭
+
+            // 로그인 버튼 클릭
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,8 +62,12 @@ public class FirstLoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             // 로그인 성공
                             // MainActivity(냉장고 추가 화면)으로 넘어간다.
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                            String userUid = firebaseUser.getUid();
                             Intent intent = new Intent(FirstLoginActivity.this, MainActivity.class);
+                            intent.putExtra("user의 UID", userUid);
                             startActivity(intent);
+
                             // 로그인 activity 종료
                             finish();
                             Toast.makeText(FirstLoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
@@ -86,4 +93,5 @@ public class FirstLoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
